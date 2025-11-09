@@ -8,9 +8,16 @@ const Tarefa = ({ tarefa, listaTarefa, setTarefa }) => {
   }
 
   return (
-    <li>
+    <li className="tarefas">
       <p>{tarefa}</p>
-      <button onClick={() => removerTarefa()}>Remover</button>
+      <div className="checkAndBtn">
+        <label className="checkbox">
+          <input type="checkbox" />
+        </label>
+        <button className="btnRemove" onClick={() => removerTarefa()}>
+          X
+        </button>
+      </div>
     </li>
   );
 };

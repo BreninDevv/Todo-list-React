@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  font-family: "Funnel Sans", sans-serif;
+  transition: 0.5s;
+}
+
+.main {
+  --cor-fundo-container: white;
+  --cor-fundo-lista: rgb(217, 253, 253);
+  --cor-fundo-input: rgb(182, 246, 248);
+  --cor-texto-principal: black;
+  --cor-borda-padrao: gray;
+  --cor-btn-add-fundo: rgb(95, 160, 160);
+  --cor-btn-add-borda: rgb(51, 85, 85);
+  --cor-btn-remove-fundo: red;
+  --cor-btn-remove-borda: rgb(94, 21, 21);
+  --cor-checkbox-marcado: rgb(1, 211, 1);
+  --cor-bolinha-darkmode: black;
+  --cor-fundo-darkmode: rgb(165, 165, 165);
+  --cor-h1-span: rgb(0, 0, 0);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main.dark {
+  --cor-fundo-body: rgb(18, 18, 43);
+  --cor-fundo-container: rgb(63, 78, 163);
+  --cor-fundo-lista: rgb(255, 255, 255);
+  --cor-fundo-input: rgb(255, 255, 255);
+  --cor-texto-principal: black;
+  --cor-borda-padrao: gray;
+  --cor-btn-add-fundo: rgb(62, 210, 255);
+  --cor-btn-add-borda: rgb(0, 238, 255);
+  --cor-btn-remove-fundo: red;
+  --cor-btn-remove-borda: rgb(94, 21, 21);
+  --cor-checkbox-marcado: rgb(1, 211, 1);
+  --cor-bolinha-darkmode: black;
+  --cor-h1-span: rgb(255, 255, 255);
+}
+
+body {
+  --cor-fundo-body: rgb(255, 255, 255);
+  background-color: var(--cor-fundo-body);
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+}
+body.dark {
+  --cor-fundo-body: rgb(18, 18, 43);
+  background-color: var(--cor-fundo-body);
+}
+h1 {
+  color: var(--cor-h1-span);
+}
+span {
+  color: var(--cor-h1-span);
+}
+
+.container {
+  background-color: var(--cor-fundo-container);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  min-height: 200px;
+  max-height: 700px;
+  padding: 20px;
+}
+.containerUl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--cor-fundo-lista);
+  border: 2px solid var(--cor-borda-padrao);
+  border-radius: 15px;
+  margin: 10px;
+  margin-bottom: 40px;
+  width: 400px;
+  max-height: 640px;
+}
+.inputAndBtn {
+  display: flex;
+  justify-content: space-evenly;
+  width: 300px;
+}
+input {
+  border: none;
+  background-color: var(--cor-fundo-input);
+  border-radius: 8px;
+  border: 2px solid var(--cor-borda-padrao);
+}
+.tarefas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btnAdd {
+  background-color: var(--cor-btn-add-fundo);
+  border-radius: 8px;
+  border: 2px solid var(--cor-btn-add-borda);
+  cursor: pointer;
+}
+.btnRemove {
+  margin-right: 30px;
+  background-color: var(--cor-btn-remove-fundo);
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--cor-btn-remove-borda);
+  cursor: pointer;
+}
+.checkbox {
+  cursor: pointer;
+  margin-right: 5px;
+}
+.checkbox input {
+  border: 2px solid var(--cor-borda-padrao);
+  border-radius: 8px;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkbox input:checked {
+  background-color: var(--cor-checkbox-marcado);
+}
+.checkbox input:checked::before {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.checkAndBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul {
+  list-style-type: none;
+  width: 290px;
+}
+.btnDarkMode {
+  background-color: var(--cor-fundo-darkmode);
+  width: 60px;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+}
+.bolinha {
+  width: 30px;
+  height: 30px;
+  background-color: var(--cor-bolinha-darkmode);
+  border-radius: 50%;
+  transform: scale(0.8);
+  cursor: pointer;
+  position: absolute;
+}
+.bolinha.dark {
+  left: 20px;
+}
+.divBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

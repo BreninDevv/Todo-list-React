@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Tarefa from "./tarefa";
+import ButtonDarkMode from "./buttonDarkMode";
 
 function App() {
   const [tarefas, setTarefa] = useState([]);
@@ -14,25 +15,59 @@ function App() {
     }
   }
 
+  const [theme, setTheme] = useState("light");
+
+  const alternarTema = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+    } else {
+      document.body.classList.add("light");
+      document.body.classList.remove("dark");
+    }
+  }, [theme]);
+
   return (
     <>
-      <h1>To-do List</h1>
-      <input ref={inputAdicionar} type="text" placeholder="Digite sua tarefa" />
-      <button onClick={() => adicionarTarefa()}>Adicionar</button>
-      {tarefas.length > 0 ? (
-        <ul>
-          {tarefas.map((tar, index) => (
-            <Tarefa
-              key={index}
-              tarefa={tar}
-              listaTarefa={tarefas}
-              setTarefa={setTarefa}
+      <div className={`main ${theme}`}>
+        <div className="divBtn">
+          <span>Dark Mode</span>
+          <ButtonDarkMode alternarTema={alternarTema} temaAtual={theme} />
+        </div>
+        <h1>To-do List</h1>
+        <div className="container">
+          <div className="inputAndBtn">
+            <input
+              ref={inputAdicionar}
+              type="text"
+              placeholder="Digite sua tarefa"
             />
-          ))}
-        </ul>
-      ) : (
-        <p>Você não tem nenhuma tarefa!</p>
-      )}
+            <button className="btnAdd" onClick={() => adicionarTarefa()}>
+              ADICIONAR
+            </button>
+          </div>
+          <div className="containerUl">
+            {tarefas.length > 0 ? (
+              <ul>
+                {tarefas.map((tar, index) => (
+                  <Tarefa
+                    key={index}
+                    tarefa={tar}
+                    listaTarefa={tarefas}
+                    setTarefa={setTarefa}
+                  />
+                ))}
+              </ul>
+            ) : (
+              <p>Você não tem nenhuma tarefa!</p>
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
