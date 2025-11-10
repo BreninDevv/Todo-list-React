@@ -7,13 +7,32 @@ function App() {
   const inputAdicionar = useRef();
 
   function adicionarTarefa() {
-    const novaLista = [...tarefas];
-    const inputValor = inputAdicionar.current.value;
+    const inputValor = inputAdicionar.current.value.trim();
     if (inputValor) {
-      novaLista.push(inputValor);
-      setTarefa(novaLista);
+      const novaTarefa = {
+        id: Date.now(),
+        texto: inputValor,
+        concluida: false,
+      };
+
+      setTarefa((prevTarefas) => [...prevTarefas, novaTarefa]);
+      inputAdicionar.current.value = "";
     }
   }
+
+  const removerTarefa = (id) => {
+    setTarefa((prevTarefas) =>
+      prevTarefas.filter((tarefa) => tarefa.id !== id)
+    );
+  };
+
+  const alternarConclusao = (id) => {
+    setTarefa((prevTarefas) =>
+      prevTarefas.map((tarefa) =>
+        tarefa.id === id ? { ...tarefa, concluida: !tarefa.concluida } : tarefa
+      )
+    );
+  };
 
   const [theme, setTheme] = useState("light");
 
@@ -54,19 +73,19 @@ function App() {
               type="text"
               placeholder="Digite sua tarefa"
             />
-            <button className="btnAdd" onClick={() => adicionarTarefa()}>
+            <button className="btnAdd" onClick={adicionarTarefa}>
               ADICIONAR
             </button>
           </div>
           <div className="containerUl">
             {tarefas.length > 0 ? (
               <ul>
-                {tarefas.map((tar, index) => (
+                {tarefas.map((tar) => (
                   <Tarefa
-                    key={index}
+                    key={tar.id}
                     tarefa={tar}
-                    listaTarefa={tarefas}
-                    setTarefa={setTarefa}
+                    removerTarefa={removerTarefa}
+                    alternarConclusao={alternarConclusao}
                   />
                 ))}
               </ul>
