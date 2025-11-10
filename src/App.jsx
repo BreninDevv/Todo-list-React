@@ -23,9 +23,17 @@ function App() {
 
   useEffect(() => {
     if (theme === "dark") {
+      const btnDark = document.getElementById("btnDarkMode");
+      const bolinha = document.getElementById("bolinha");
+      btnDark.classList.add("dark");
+      bolinha.classList.add("dark");
       document.body.classList.add("dark");
       document.body.classList.remove("light");
     } else {
+      const btnDark = document.getElementById("btnDarkMode");
+      const bolinha = document.getElementById("bolinha");
+      btnDark.classList.remove("dark");
+      bolinha.classList.remove("dark");
       document.body.classList.add("light");
       document.body.classList.remove("dark");
     }

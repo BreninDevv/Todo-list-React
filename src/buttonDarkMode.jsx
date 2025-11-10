@@ -1,7 +1,11 @@
 const ButtonDarkMode = ({ alternarTema }) => {
   return (
-    <div className="btnDarkMode">
-      <div className="bolinha" onClick={() => alternarTema()}></div>
+    <div
+      id="btnDarkMode"
+      className="btnDarkMode"
+      onClick={() => alternarTema()}
+    >
+      <div id="bolinha" className="bolinha"></div>
     </div>
   );
 };
