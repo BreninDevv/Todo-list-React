@@ -1,6 +1,4 @@
-import React from "react";
-
-function Tarefa({ tarefa, removerTarefa, alternarConclusao }) {
+function Tarefa({ tarefa, removerTarefa, alternarConclusao, theme }) {
   const handleToggle = () => {
     alternarConclusao(tarefa.id);
   };
@@ -10,13 +8,17 @@ function Tarefa({ tarefa, removerTarefa, alternarConclusao }) {
   };
 
   return (
-    <li className={`tarefas ${tarefa.concluida ? "tarefa-concluida" : ""}`}>
+    <li
+      className={`tarefas ${tarefa.concluida ? "tarefa-concluida" : ""} ${
+        theme === "dark" ? "dark-mode-tarefa" : ""
+      }`}
+    >
+      {" "}
       <span
         style={{ textDecoration: tarefa.concluida ? "line-through" : "none" }}
       >
-        {tarefa.texto}
-      </span>
-
+        {tarefa.texto}{" "}
+      </span>{" "}
       <div className="checkAndBtn">
         <label className="checkbox">
           <input

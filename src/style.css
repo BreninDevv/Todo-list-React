@@ -38,9 +38,11 @@
   --cor-btn-remove-borda: rgb(94, 21, 21);
   --cor-checkbox-marcado: rgb(1, 211, 1);
   --cor-bolinha-darkmode: black;
-  --cor-h1-span: rgb(255, 255, 255);
+  --cor-h1-span: rgb(0, 0, 0);
 }
-
+.dark-mode-tarefa span {
+  color: black; /* Ou qualquer cor clara que contraste com o fundo escuro */
+}
 body {
   --cor-fundo-body: rgb(255, 255, 255);
   background-color: var(--cor-fundo-body);
